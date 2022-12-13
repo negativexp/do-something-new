@@ -1,0 +1,179 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.button-start {
+    margin: 20px;
+    position: absolute;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.credits {
+    z-index: 3;
+    background-color: rgb(52, 52, 52);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline: solid 2px black;
+    top: 101%;
+    width: 98%;
+    height: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+.web-content {
+    z-index: 2;
+    outline: 2px solid black;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+section {
+    padding-left: 100px;
+    padding-right: 100px;
+    border-top: 2px solid white;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+section:nth-child(1) {
+    background-color: blue;
+}
+section:nth-child(2) {
+    background-color: green;
+}
+section:nth-child(3) {
+    background-color: yellow;
+}
+
+header {
+    z-index: 1000;
+    height: 20%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: top 1s ease, transform 1s ease;
+}
+
+.topWindow {
+    top: 0 !important;
+    transform: none !important;
+}
+
+.welcome-menu {
+    width: 650px;
+}
+
+.welcome-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-top: 2px solid white;
+}
+
+.welcome-menu ul button {
+    color: white;
+    border: none;
+    width: 100%;
+    height: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 18px;
+}
+
+.welcome-menu li {
+    color: white;
+    font-size: 22px;
+    float: left;
+}
+
+.welcome-menu li:hover {
+    text-decoration: underline;
+}
+
+.rotateRight {
+    transform: rotate(-20deg);
+}
+
+.rotateLeft {
+    transform: rotate(20deg);
+}
+
+.credits-behind {
+    z-index: 1;
+    filter: brightness(60%);
+    outline: solid 2px black;
+    position: absolute;
+    background-color: purple;
+    width: 79%;
+    height: 100%;
+}
+
+.credits-content {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 90%;
+    height: 90%;
+    border-radius: 25px;
+    backdrop-filter: blur(3px);
+    outline: 2px solid black;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.marquee {
+    font-size: 38px;
+    letter-spacing: 2px;
+    font-family: 'Chivo Mono', monospace;
+}
+
+.welcome-wrap {
+    height: 150px;
+    width: 650px;
+    cursor: pointer;
+}
+
+.svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.middle {
+
+}
