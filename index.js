@@ -1,5 +1,6 @@
 var header = document.body.querySelector("header");
 var sections = document.body.querySelectorAll("section")
+var headerButtons = document.body.querySelectorAll("nav button")
 var lastSection = "none";
 mainMenuSVG = [
     document.getElementById("svg1"),
@@ -12,6 +13,8 @@ mainMenuSVG = [
 mainMenuSVG.forEach(element => {
     element.style.opacity = 0
 });
+
+document.body.querySelector("nav").style.opacity = 0
 
 startEverything();
 
@@ -102,16 +105,37 @@ function startEverything(button) {
         easing: 'easeInOutSine',
         duration: 750
     })
+    anime({
+        targets: "nav",
+        delay: 6750,
+        opacity: 1
+    })
 }
 
-function getSection(item) {
+function crossSection(button) {
+    headerButtons.forEach(el => {
+        if(el == button) {
+            el.classList.remove("lineThrough")
+        } else {
+            el.classList.add("lineThrough")
+        }
+    })
+}
+
+function getSection(item, button) {
+    crossSection(button)
     if(lastSection != item) {
         if(!header.classList.contains("topWindow")) {
             //get header to top and bring from bottom a selected item
             header.classList.add("topWindow")
             anime({
                 targets: item,
-                top: "20%",
+                top: "0%",
+                easing: "easeOutQuad"
+            })
+            anime({
+                targets: document.body.querySelector("main"),
+                height: "80%",
                 easing: "easeOutQuad"
             })
         } else {
@@ -119,22 +143,19 @@ function getSection(item) {
             //make the visible section change brightness
             //bring up clicked section
             setZindex(item)
-            var tl = anime.timeline({
-                targets: lastSection,
-                filter: "brightness(20%)",
-                endDelay: 1000
-            })
-            .add({
+            item.classList.remove("lowerBrightness");
+            lastSection.classList.add("lowerBrightness");
+            anime({
                 targets: item,
-                width: "50%",
-                top: ["100%", "50%", "20%"],
-                duration: 1000
-            })
-            .add({
-                targets: item,
-                width: "100%"
-            })
-
+                delay: 500,
+                easing: 'easeInOutSine',
+                keyframes: [
+                    {top: ["100%", "15%"], width: ["0%", "75%"], borderTopLeftRadius: "25px",
+                    borderTopRightRadius: "25px", easing: "easeOutCubic"},
+                    {top: 0, width: "100%", delay: 150, borderTopRightRadius: "0px",
+                    borderTopLeftRadius: "0px", easing: "easeInQuint"},
+                ]
+            });
         }
         lastSection = item
     }
@@ -143,21 +164,31 @@ function getSection(item) {
 function setZindex(item) {
     //item clicked
     let temp = sections.length
-    item.style.zIndex = temp--
+
+    item.style.zIndex = temp--;
+    lastSection.style.zIndex = temp--;
     sections.forEach(el => {
-        if(el != item) {
-            el.style.zIndex = temp--
+        if(el != item && el != lastSection) {
+            el.style.zIndex = temp--;
         }
     })
 }
 
 function removeTopWindow() {
     document.body.querySelector("header").classList.remove("topWindow")
+    sections.forEach(el => {
+        el.classList.remove("lowerBrightness");
+    })
     console.log("remove")
     anime({
         targets: sections,
         top: "100%",
         duration: 1000,
+        easing: "easeOutQuad"
+    })
+    anime({
+        targets: document.body.querySelector("main"),
+        height: "0%",
         easing: "easeOutQuad"
     })
     lastSection = "none"
