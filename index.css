@@ -107,22 +107,20 @@ section::-webkit-scrollbar {
 }
 #projects {
     width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
-    background-color: red;
+    padding-left: 200px;
+    padding-right: 200px;
     display: flex;
     flex-wrap: wrap;
 }
 .project {
-    background-color: green;
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 10px;
+    padding-bottom: 50px;
 }
 .project p {
-    width: 75%;
+    width: 350px;
     margin: 0;
     text-align: center;
 }
@@ -165,6 +163,14 @@ article button {
 
 article button:hover {
     border-bottom: 2px solid hotpink;
+}
+
+article a {
+    letter-spacing: 2px;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 /* SECTIONS end */

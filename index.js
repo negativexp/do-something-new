@@ -1,6 +1,7 @@
 var header = document.body.querySelector("header");
 var sections = document.body.querySelectorAll("section")
 var headerButtons = document.body.querySelectorAll("nav button")
+
 var lastSection = "none";
 mainMenuSVG = [
     document.getElementById("svg1"),
