@@ -151,7 +151,7 @@ function getSection(item, button) {
                 delay: 500,
                 easing: 'easeInOutSine',
                 keyframes: [
-                    {top: ["100%", "15%"], width: ["0%", "75%"], borderTopLeftRadius: "25px",
+                    {top: ["100%", "15%"], width: ["50%", "75%"], borderTopLeftRadius: "25px",
                     borderTopRightRadius: "25px", easing: "easeOutCubic"},
                     {top: 0, width: "100%", delay: 150, borderTopRightRadius: "0px",
                     borderTopLeftRadius: "0px", easing: "easeInQuint"},
